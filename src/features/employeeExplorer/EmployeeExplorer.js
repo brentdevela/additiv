@@ -5,7 +5,6 @@ import { isEmpty } from 'lodash';
 import styles from './EmployeeExplorer.module.css';
 import '../../App.css';
 
-
 export function EmployeeExplorer() {
     let history = useHistory();
     const [name, setName] = useState(null);

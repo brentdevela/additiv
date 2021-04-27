@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { startCase } from 'lodash';
@@ -17,12 +17,12 @@ function showAllSubordinates(currentName, employees) {
 
     const populateSubordinates = (name, employees, refSubordinates) => {
         refSubordinates[name] = (<div key={name}><span className="App-section-content-text">{name}</span></div>);
-        employees[name].subordinates.forEach((subordinate) => {
+        employees[name]?.subordinates.forEach((subordinate) => {
             populateSubordinates(subordinate, employees, refSubordinates);
         });
     };
 
-    employees[currentName].subordinates.forEach((subordinate) => {
+    employees[currentName]?.subordinates.forEach((subordinate) => {
        populateSubordinates(subordinate, employees, allSubordinates);
     });
 
@@ -36,6 +36,7 @@ export function EmployeeOverview() {
     const status = useSelector(selectStatus);
     const currentName = useSelector(selectName);
     const employees = useSelector(selectEmployees);
+    const [ showAll, setShowAll ] = useState(false);
 
     useEffect(() => {
         dispatch(setName(name));
@@ -53,10 +54,11 @@ export function EmployeeOverview() {
                     <div className="App-section-content-result">
                         <span className="App-section-content-text">{`Subordinates of employee ${startCase(currentName)}:`}</span>
                         <div className="App-section-content-list">
-                            {employees[currentName]?.subordinates.length > 0 ?
-                                // showAllSubordinates(currentName, employees)
+                            {showAll ?
+                                showAllSubordinates(currentName, employees) :
                                 showDirectSubordinates(currentName, employees)
-                                : <div><span className="App-section-content-text">None</span></div>}
+                                }
+                            {employees[currentName]?.subordinates.length === 0 && (<div><span className="App-section-content-text">None</span></div>)}
                         </div>
                     </div>
                 }
@@ -68,6 +70,12 @@ export function EmployeeOverview() {
                 >
                     Back
                 </button>
+                {!showAll && status !== 'invalid' && (<button
+                    className={styles.button}
+                    onClick={() => setShowAll(true)}
+                >
+                    Show All
+                </button>)}
             </div>
         </div>
     );

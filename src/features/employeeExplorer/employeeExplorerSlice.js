@@ -5,10 +5,6 @@ import {isEmpty} from "lodash";
 const initialState = {
     status: 'idle',
     name: '',
-    details: {
-        position: '',
-        directSubordinates: [],
-    },
     employees: {},
 };
 
