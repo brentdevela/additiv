@@ -1,0 +1,83 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 8vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  min-height: 15vh;
+  display: grid;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 1vw;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.App-link {
+  color: rgb(112, 76, 182);
+}
+
+@keyframes App-logo-float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.App-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 70px;
+}
+
+.App-section-text {
+  color: rgb(37, 40, 46);
+  font-weight: 900;
+  font-variant-ligatures: common-ligatures;
+  line-height: 41.1429px;
+  letter-spacing: -0.301714px;
+  font-size: 30.1714px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 2px;
+}
+
+.App-section-content > button {
+  margin-left: 4px;
+  margin-right: 8px;
+}
+
+.App-section-content-result {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-section-content-list {
+  margin-top: 25px;
+  text-align: left;
+}
+
+.App-section-content-text {
+  color: #575757;
+  font-weight: 400;
+  font-size: 1.35714286em;
+  line-height: 1.68421053em;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 2px;
+}
+
+.App-section-content:not(:last-child) {
+  margin-bottom: 30px;
+}

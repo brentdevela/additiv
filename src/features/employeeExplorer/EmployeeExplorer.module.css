@@ -1,0 +1,46 @@
+.button {
+    background: #3657ff;
+    background-color: rgb(54, 87, 255);
+    color: rgb(255, 255, 255);
+    border-radius: 255px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    line-height: 27.8571px;
+    border-color: #3657ff;
+    padding: 0.30952381em 1.28571429em 0.30952381em 1.28571429em;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(66,98,255,0);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(66,98,255,0);
+    box-shadow: 0px 0px 5px 0px rgba(66,98,255,0);
+    border: 0 none;
+}
+
+.button:hover {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(66,98,255,1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(66,98,255,1);
+    box-shadow: 0px 0px 5px 0px rgba(66,98,255,1);
+    border: 0 none;
+}
+
+.textbox {
+    -webkit-appearance: none;
+    background: #fcfcfc;
+    border-radius: 6px;
+    border: 1px solid #ececec;
+    font-size: 15px;
+    color: rgb(61, 61, 61);
+    padding-left: 0.92857143em;
+    width: 250px;
+    height: 2.78571429em;
+    margin-right: 4px;
+    background: #fcfcfc;
+    border: 1px solid #ececec;
+}
+
+.textbox:focus {
+    outline: none;
+    border-color: #6982ff;
+}
