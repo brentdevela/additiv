@@ -6,8 +6,28 @@ import { startCase } from 'lodash';
 import '../../App.css';
 import styles from "./EmployeeExplorer.module.css";
 
-import { setName, selectName, selectStatus, selectDetails, fetchEmployeeAsync } from "./employeeExplorerSlice";
+import { setName, selectName, selectStatus, selectEmployees, fetchEmployeeAsync } from "./employeeExplorerSlice";
 
+function showDirectSubordinates(currentName, employees) {
+    return employees[currentName]?.subordinates?.map((subordinate) => <div key={subordinate}><span className="App-section-content-text">{subordinate}</span></div>);
+};
+
+function showAllSubordinates(currentName, employees) {
+    const allSubordinates = {};
+
+    const populateSubordinates = (name, employees, refSubordinates) => {
+        refSubordinates[name] = (<div key={name}><span className="App-section-content-text">{name}</span></div>);
+        employees[name].subordinates.forEach((subordinate) => {
+            populateSubordinates(subordinate, employees, refSubordinates);
+        });
+    };
+
+    employees[currentName].subordinates.forEach((subordinate) => {
+       populateSubordinates(subordinate, employees, allSubordinates);
+    });
+
+    return Object.values(allSubordinates);
+};
 
 export function EmployeeOverview() {
     let { name } = useParams();
@@ -15,7 +35,7 @@ export function EmployeeOverview() {
     const dispatch = useDispatch();
     const status = useSelector(selectStatus);
     const currentName = useSelector(selectName);
-    const details = useSelector(selectDetails);
+    const employees = useSelector(selectEmployees);
 
     useEffect(() => {
         dispatch(setName(name));
@@ -33,8 +53,10 @@ export function EmployeeOverview() {
                     <div className="App-section-content-result">
                         <span className="App-section-content-text">{`Subordinates of employee ${startCase(currentName)}:`}</span>
                         <div className="App-section-content-list">
-                            {details
-                                .directSubordinates?.map((subordinate) => <div><span className="App-section-content-text">{subordinate}</span></div>)}
+                            {employees[currentName]?.subordinates.length > 0 ?
+                                // showAllSubordinates(currentName, employees)
+                                showDirectSubordinates(currentName, employees)
+                                : <div><span className="App-section-content-text">None</span></div>}
                         </div>
                     </div>
                 }
