@@ -13,7 +13,7 @@ const server = setupServer(
         return res(ctx.json(['CEO',{'direct-subordinates': ['Nina', 'Anna']}]));
     }),
     rest.get('http://api.additivasia.io/api/v1/assignment/employees/Nina', (req, res, ctx) => {
-        return res(ctx.json(['CEO',{'direct-subordinates': ['Beth']}]));
+        return res(ctx.json(['Secretary',{'direct-subordinates': ['Beth']}]));
     }),
     rest.get('http://api.additivasia.io/api/v1/assignment/employees/Anna', (req, res, ctx) => {
         return res(ctx.json(['employee']));
